@@ -90,7 +90,7 @@
 		margin: 1px auto;
 	}
 	
-	#button {
+	#button-confirm {
 		width: 80%;	
 	}
 	

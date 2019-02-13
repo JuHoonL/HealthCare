@@ -10,29 +10,26 @@
 </head>
 <body>
 <header>
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-     <a class="navbar-brand mr-1" href="${pageContext.request.contextPath}/">헬스케어프로그램</a>
+      <a class="navbar-brand mr-1" href="${pageContext.request.contextPath}/">헬스케어프로그램</a>
+     <div style ="text-align:right; width:100%;">
+    <label style = "color:white;">Id</label> <input type ="text" style = "text-align:right; ">
+    <label style = "color:white;">PassWord</label> <input type ="password" style = "text-align:right; ">
+     
     
-	<a class="btn btn-link btn-sm text-white ml-auto ml-md-0" 
-	href="#" >
+    
+    </div>
+	<a class="btn btn-link btn-sm text-white ml-auto " style = "width:100px;"
+	href="sports" >
 	로그인
     </a>
-	<a class="btn btn-link btn-sm text-white ml-auto ml-md-0" 
+	<a class="btn btn-link btn-sm text-white"  style = "width:100px;"
 	href="user_join" >
 	회원가입
     </a>
-     <a class="btn btn-link btn-sm text-white ml-auto ml-md-0" 
-	href="food_select" >
-	칼로리계산
-    </a>
-     <a class="btn btn-link btn-sm text-white ml-auto ml-md-0" 
-	href="#" >
-	다이어리
-    </a>
-   
 
-  </nav>
+    </nav>
 </header>
 	<div>
 	<c:forEach items="${SLIST}" var="sportsL" >
