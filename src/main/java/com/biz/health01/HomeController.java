@@ -39,6 +39,37 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "home2", method = RequestMethod.GET)
+	public String home02(Locale locale, Model model) {
+				
+		return "home02";
+	}
+	
+	@RequestMapping(value="login", method = RequestMethod.POST)
+	public String login(@ModelAttribute UserVO vo, Model model, HttpSession session) {
+		
+		UserVO sVO = uS.user_FindByUserId(vo.getUserId());
+		
+		String retMsg = "";
+		
+		if(sVO == null) {
+			retMsg = "아이디나 비밀번호가 일치하지 않습니다.";
+		} else {
+			retMsg = sVO.getUserName() + "님 반갑습니다.";
+			session.setAttribute("LOGIN",sVO);
+		}
+		
+		return "redirect:home2";
+	}
+	
+	@RequestMapping(value="logout", method=RequestMethod.GET)
+	public String logout(HttpSession session) {
+		
+		session.removeAttribute("LOGIN");
+		
+		return "redirect:home2";
+	}
+	
 	@RequestMapping(value = "user_join", method = RequestMethod.GET)
 	public String user_join() {
 		
