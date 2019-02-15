@@ -32,24 +32,25 @@
   	}
   	
   	label, input {
-  		
+  		width: 30%;
   	}
   	
   	.flex-login-title {
   		margin: 5px;
 		color: white;
+		text-decoration: none;
   	}
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
   	$(function(){
 		 $("#login-button").click(function(){
-			 var userId = $("#userID").val();
+			 var userId = $("#userId").val();
 			 var password = $("#password").val();
 			 
 			 if(userId == "") {
 				 alert("Id를 입력해주세요")
-				 $("#userID").focus();
+				 $("#userId").focus();
 				 return false;
 			 }
 			 if(password == "") {
@@ -60,6 +61,15 @@
 			 
 			 $("form").submit();
 		 })
+		 
+		$(function(){
+			 if("${MSG}" == "true") {
+				 alert("로그인 되었습니다.")
+			 } else if("%{MSG}" == "false"){
+				 alert("아이디나 비밀번호를 다시 확인해 주세요.")
+			 }
+		 })
+		 
 	})
   </script>
 <body>

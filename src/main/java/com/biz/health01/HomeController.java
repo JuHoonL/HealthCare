@@ -40,8 +40,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "home2", method = RequestMethod.GET)
-	public String home02(Locale locale, Model model) {
+	public String home02(Model model, String MSG) {
 				
+		model.addAttribute("MSG",MSG);
+		
 		return "home02";
 	}
 	
@@ -50,14 +52,21 @@ public class HomeController {
 		
 		UserVO sVO = uS.user_FindByUserId(vo.getUserId());
 		
-		String retMsg = "";
+		System.out.println(sVO);
 		
+		String retMsg = "";
 		if(sVO == null) {
-			retMsg = "아이디나 비밀번호가 일치하지 않습니다.";
+			retMsg = "false";
 		} else {
-			retMsg = sVO.getUserName() + "님 반갑습니다.";
-			session.setAttribute("LOGIN",sVO);
+			if(sVO.getPassword().equals(vo.getPassword())) {
+				retMsg = "true";
+				session.setAttribute("LOGIN",sVO);
+			} else {
+				retMsg = "false";
+			}
 		}
+		
+		model.addAttribute("MSG",retMsg);
 		
 		return "redirect:home2";
 	}
